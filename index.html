@@ -6,7 +6,6 @@
 
 <title>Acesso VIP</title>
 
-<!-- FAVICON -->
 <link rel="icon" href="favicon.png" type="image/png">
 
 <!-- META PIXEL -->
@@ -86,10 +85,11 @@ height:240px;
 border:none;
 }
 
-.vimeo-overlay{
+.overlay-block{
 position:absolute;
 inset:0;
 background:transparent;
+z-index:10;
 pointer-events:none;
 }
 
@@ -150,10 +150,7 @@ margin-top:22px;
 font-size:10px;
 color:#444;
 }
-.footer a{
-color:#666;
-text-decoration:none;
-}
+.footer a{color:#666;text-decoration:none}
 
 @keyframes blink{50%{opacity:.4}}
 </style>
@@ -165,7 +162,7 @@ text-decoration:none;
 
 <div class="live-counter">
 <span class="dot"></span>
-<span id="viewerCount">114</span> pessoas estão vendo isso agora
+<span id="viewerCount">118</span> pessoas estão vendo isso agora
 </div>
 
 <div class="card">
@@ -179,11 +176,20 @@ Descubra como influenciadores virtuais estão sendo criados sem aparecer.
 <div class="video-box">
 <iframe
 id="vimeoPlayer"
-src="https://player.vimeo.com/video/1147318106?autoplay=1&muted=0&playsinline=1&title=0&byline=0&portrait=0&badge=0"
+src="https://player.vimeo.com/video/1147318106
+?autoplay=1
+&muted=0
+&loop=1
+&autopause=0
+&controls=0
+&title=0
+&byline=0
+&portrait=0
+&badge=0"
 allow="autoplay; fullscreen; picture-in-picture"
 allowfullscreen>
 </iframe>
-<div class="vimeo-overlay"></div>
+<div class="overlay-block"></div>
 </div>
 
 <div class="progress"><span></span></div>
@@ -195,9 +201,9 @@ QUERO VER O MÉTODO AGORA
 </a>
 
 <div class="security">
-<img src="selo-seguro.png" alt="Ambiente seguro">
-<img src="selo-acesso.png" alt="Acesso imediato">
-<img src="selo-verificado.png" alt="Conteúdo verificado">
+<img src="selo-seguro.png">
+<img src="selo-acesso.png">
+<img src="selo-verificado.png">
 </div>
 
 </div>
@@ -209,34 +215,37 @@ QUERO VER O MÉTODO AGORA
 
 </div>
 
-<!-- CONTADOR DINÂMICO -->
+<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
+const player=new Vimeo.Player('vimeoPlayer');
+
+// contador realista
 (function(){
-const el=document.getElementById("viewerCount");
-let base=Math.floor(Math.random()*(140-90+1))+90;
+let el=document.getElementById("viewerCount");
+let base=Math.floor(Math.random()*(140-90))+90;
 el.innerText=base;
 setInterval(()=>{
-let change=Math.floor(Math.random()*5)-2;
-base=Math.max(82,base+change);
+base+=Math.floor(Math.random()*5)-2;
+if(base<80)base=82;
 el.innerText=base;
 },4000);
 })();
-</script>
-
-<!-- VIMEO API -->
-<script src="https://player.vimeo.com/api/player.js"></script>
-<script>
-const iframe=document.getElementById('vimeoPlayer');
-const player=new Vimeo.Player(iframe);
-
-// restaurar tempo
-const saved=localStorage.getItem('vimeoTime');
-if(saved){player.setCurrentTime(parseFloat(saved));}
 
 // salvar progresso
-player.on('timeupdate',data=>{
-localStorage.setItem('vimeoTime',data.seconds);
+player.on('timeupdate',d=>{
+localStorage.setItem('vimeoTime',d.seconds);
+
+// ANTI-TELA FINAL
+player.getDuration().then(total=>{
+if(d.seconds > total - 2){
+player.setCurrentTime(1);
+}
 });
+});
+
+// restaurar
+let saved=localStorage.getItem('vimeoTime');
+if(saved){player.setCurrentTime(parseFloat(saved));}
 </script>
 
 </body>
