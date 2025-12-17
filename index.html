@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Acesso VIP</title>
+
+<!-- FAVICON -->
+<link rel="icon" href="./favicon.png" type="image/png">
+
+<!-- PIXEL META -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1674662093047982');
+fbq('track', 'PageView');
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+
+body{
+background:#000;
+background-image:radial-gradient(circle at top,#2a003b 0%,#000 60%);
+color:#fff;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:10px;
+}
+
+.container{
+max-width:420px;
+width:100%;
+text-align:center;
+}
+
+.live-counter{
+background:rgba(255,0,0,.15);
+border:1px solid #ff0000;
+color:#ffbaba;
+font-size:12px;
+padding:6px 14px;
+border-radius:30px;
+display:inline-flex;
+align-items:center;
+gap:6px;
+margin-bottom:16px;
+}
+
+.dot{
+width:8px;
+height:8px;
+background:red;
+border-radius:50%;
+animation:blink 1s infinite;
+}
+
+.card{
+background:linear-gradient(145deg,#111,#070707);
+border:2px solid #9d00ff;
+border-radius:18px;
+padding:20px;
+box-shadow:0 0 30px rgba(157,0,255,.35);
+}
+
+h1{
+font-size:20px;
+margin-bottom:10px;
+}
+
+.highlight{
+color:#FFD700;
+}
+
+.subtitle{
+font-size:14px;
+color:#ccc;
+margin-bottom:16px;
+}
+
+.video-box{
+position:relative;
+border-radius:14px;
+overflow:hidden;
+border:1px solid #333;
+margin-bottom:18px;
+}
+
+.video-box iframe{
+width:100%;
+height:240px;
+border:none;
+}
+
+.tap-audio{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,.75);
+border:1px solid #00ff66;
+color:#00ff66;
+font-size:11px;
+padding:6px 10px;
+border-radius:20px;
+pointer-events:none;
+}
+
+.progress{
+height:8px;
+background:#222;
+border-radius:10px;
+overflow:hidden;
+margin-bottom:6px;
+}
+
+.progress span{
+display:block;
+height:100%;
+width:100%;
+background:linear-gradient(90deg,#9d00ff,#FFD700);
+}
+
+.status{
+font-size:11px;
+color:#888;
+text-align:right;
+margin-bottom:14px;
+}
+
+.cta{
+display:block;
+background:linear-gradient(180deg,#00d657,#009f41);
+color:#fff;
+font-size:17px;
+font-weight:900;
+text-decoration:none;
+padding:18px;
+border-radius:10px;
+box-shadow:0 0 20px rgba(0,255,120,.5);
+}
+
+.cta span{
+display:block;
+font-size:11px;
+font-weight:400;
+margin-top:4px;
+}
+
+.security{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:16px;
+}
+
+.security img{
+height:42px;
+opacity:.95;
+}
+
+.footer{
+margin-top:22px;
+font-size:10px;
+color:#444;
+}
+
+.footer a{
+color:#666;
+text-decoration:none;
+}
+
+@keyframes blink{
+50%{opacity:.4}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="live-counter">
+<span class="dot"></span>
+<span>114</span> pessoas estão vendo isso agora
+</div>
+
+<div class="card">
+
+<h1>O Segredo do <span class="highlight">Mercado de IA</span></h1>
+
+<p class="subtitle">
+Descubra como influenciadores virtuais estão sendo criados sem aparecer.
+</p>
+
+<div class="video-box">
+<iframe
+src="https://player.vimeo.com/video/1147318106?autoplay=1&muted=0&playsinline=1"
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe>
+<div class="tap-audio">🔊 Toque no vídeo para ouvir</div>
+</div>
+
+<div class="progress"><span></span></div>
+<div class="status">Acesso liberado ✔</div>
+
+<a class="cta" href="https://cakto.app/6KeTY7f/?affiliate=gKdVw4o2">
+QUERO VER O MÉTODO AGORA
+<span>Acesso imediato</span>
+</a>
+
+<div class="security">
+<img src="./selo-seguro.png" alt="Ambiente seguro">
+<img src="./selo-acesso.png" alt="Acesso imediato">
+<img src="./selo-verificado.png" alt="Conteúdo verificado">
+</div>
+
+</div>
+
+<div class="footer">
+<p>Este site não possui vínculo com Facebook ou Instagram.</p>
+<a href="./privacidade.html">Privacidade</a> • <a href="./termos.html">Termos</a>
+</div>
+
+</div>
+
+</body>
+</html>
