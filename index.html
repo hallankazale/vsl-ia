@@ -6,6 +6,7 @@
 
 <title>Acesso VIP</title>
 
+<!-- FAVICON -->
 <link rel="icon" href="favicon.png" type="image/png">
 
 <!-- META PIXEL -->
@@ -77,19 +78,16 @@ border-radius:14px;
 overflow:hidden;
 border:1px solid #333;
 margin-bottom:18px;
+padding-top:177.5%; /* formato vertical */
 }
 
 .video-box iframe{
-width:100%;
-height:240px;
-border:none;
-}
-
-.overlay-block{
 position:absolute;
-inset:0;
-z-index:10;
-pointer-events:none;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:none;
 }
 
 .progress{
@@ -161,7 +159,7 @@ color:#444;
 
 <div class="live-counter">
 <span class="dot"></span>
-<span id="viewerCount">112</span> pessoas estão vendo isso agora
+<span id="viewerCount">113</span> pessoas estão vendo isso agora
 </div>
 
 <div class="card">
@@ -174,12 +172,10 @@ Descubra como influenciadores virtuais estão sendo criados sem aparecer.
 
 <div class="video-box">
 <iframe
-id="vimeoPlayer"
-src="https://player.vimeo.com/video/1147318106?autoplay=1&muted=0&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&badge=0"
+src="https://player.vimeo.com/video/1147318106?autoplay=1&muted=1&loop=1&autopause=0&badge=0"
 allow="autoplay; fullscreen; picture-in-picture"
 allowfullscreen>
 </iframe>
-<div class="overlay-block"></div>
 </div>
 
 <div class="progress"><span></span></div>
@@ -191,9 +187,9 @@ QUERO VER O MÉTODO AGORA
 </a>
 
 <div class="security">
-<img src="selo-seguro.png">
-<img src="selo-acesso.png">
-<img src="selo-verificado.png">
+<img src="selo-seguro.png" alt="Ambiente seguro">
+<img src="selo-acesso.png" alt="Acesso imediato">
+<img src="selo-verificado.png" alt="Conteúdo verificado">
 </div>
 
 </div>
@@ -205,11 +201,8 @@ QUERO VER O MÉTODO AGORA
 
 </div>
 
-<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
-const player=new Vimeo.Player('vimeoPlayer');
-
-// contador dinâmico
+// contador dinâmico simples
 (function(){
 let el=document.getElementById("viewerCount");
 let base=Math.floor(Math.random()*(140-90))+90;
@@ -220,20 +213,6 @@ if(base<80)base=82;
 el.innerText=base;
 },4000);
 })();
-
-// salvar progresso e evitar tela final
-player.on('timeupdate',d=>{
-localStorage.setItem('vimeoTime',d.seconds);
-player.getDuration().then(total=>{
-if(d.seconds > total - 1.5){
-player.setCurrentTime(1);
-}
-});
-});
-
-// restaurar progresso
-let saved=localStorage.getItem('vimeoTime');
-if(saved){player.setCurrentTime(parseFloat(saved));}
 </script>
 
 </body>
