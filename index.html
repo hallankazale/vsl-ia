@@ -88,7 +88,6 @@ border:none;
 .overlay-block{
 position:absolute;
 inset:0;
-background:transparent;
 z-index:10;
 pointer-events:none;
 }
@@ -162,7 +161,7 @@ color:#444;
 
 <div class="live-counter">
 <span class="dot"></span>
-<span id="viewerCount">118</span> pessoas estão vendo isso agora
+<span id="viewerCount">112</span> pessoas estão vendo isso agora
 </div>
 
 <div class="card">
@@ -176,16 +175,7 @@ Descubra como influenciadores virtuais estão sendo criados sem aparecer.
 <div class="video-box">
 <iframe
 id="vimeoPlayer"
-src="https://player.vimeo.com/video/1147318106
-?autoplay=1
-&muted=0
-&loop=1
-&autopause=0
-&controls=0
-&title=0
-&byline=0
-&portrait=0
-&badge=0"
+src="https://player.vimeo.com/video/1147318106?autoplay=1&muted=0&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&badge=0"
 allow="autoplay; fullscreen; picture-in-picture"
 allowfullscreen>
 </iframe>
@@ -219,7 +209,7 @@ QUERO VER O MÉTODO AGORA
 <script>
 const player=new Vimeo.Player('vimeoPlayer');
 
-// contador realista
+// contador dinâmico
 (function(){
 let el=document.getElementById("viewerCount");
 let base=Math.floor(Math.random()*(140-90))+90;
@@ -231,19 +221,17 @@ el.innerText=base;
 },4000);
 })();
 
-// salvar progresso
+// salvar progresso e evitar tela final
 player.on('timeupdate',d=>{
 localStorage.setItem('vimeoTime',d.seconds);
-
-// ANTI-TELA FINAL
 player.getDuration().then(total=>{
-if(d.seconds > total - 2){
+if(d.seconds > total - 1.5){
 player.setCurrentTime(1);
 }
 });
 });
 
-// restaurar
+// restaurar progresso
 let saved=localStorage.getItem('vimeoTime');
 if(saved){player.setCurrentTime(parseFloat(saved));}
 </script>
